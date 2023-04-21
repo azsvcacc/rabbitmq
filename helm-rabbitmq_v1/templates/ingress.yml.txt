@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: {{ .Values.rabbitmq.deployment.name }}
+ namespace: {{ .Values.namespace }}
+ annotations:
+   #nginx.ingress.kubernetes.io/rewrite-target: /
+   #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+   #cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+#   - hosts:
+#     - test.example.com
+    #secretName: test-example-tls
+  rules:
+  - host: {{ .Values.rabbitmq.ingress.host }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.rabbitmq.service.name }}
+            port:
+              number: 80

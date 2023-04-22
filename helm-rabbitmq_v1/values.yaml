@@ -1,0 +1,25 @@
+namespace: rabbits
+
+rabbitmq:
+    deployment:
+        name: rabbitmq
+        image: bitnami/rabbitmq:3.11.13-debian-11-r0
+        replicaCount: 4
+    service:
+        name: rabbitmq
+        #type: NodePort
+        port: 8080
+        targetport: 8080
+    labels:
+        name: 
+           app: rabbitmq
+    container:
+        name: rabbitmq
+    serviceAccountName: rabbitmq
+    storageClassName: standard
+    secret:
+        name: rabbit-secret
+    configmap:
+        name: rabbitmq-config
+    ingress:
+         host: rabbitmq.example.com

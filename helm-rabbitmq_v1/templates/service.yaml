@@ -1,0 +1,34 @@
+# Source: rabbitmq/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.rabbitmq.service.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: rabbitmq
+    helm.sh/chart: rabbitmq-11.13.0
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+    - name: amqp
+      port: 5672
+      targetPort: amqp
+      nodePort: null
+    - name: epmd
+      port: 4369
+      targetPort: epmd
+      nodePort: null
+    - name: dist
+      port: 25672
+      targetPort: dist
+      nodePort: null
+    - name: http-stats
+      port: 15672
+      targetPort: stats
+      nodePort: null
+  selector: 
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: rabbitmq

@@ -1,0 +1,12 @@
+#    kubectl apply -f https://raw.githubusercontent.com/abhirockzz/kubernetes-custom-storageclass/master/custom-storage-class.yaml
+#kubectl get sc
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: standard
+provisioner: kubernetes.io/azure-disk
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  storageaccounttype: Standard_LRS
+  kind: Managed

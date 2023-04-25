@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/rabbitmq
+helm install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq
 ```
 
 ## Introduction
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `rabbitmq`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/rabbitmq
+helm install rabbitmq Rabbitmq_v1/
 ```
 
 The command deploys RabbitMQ on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.

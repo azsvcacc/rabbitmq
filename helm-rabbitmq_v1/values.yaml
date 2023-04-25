@@ -11,8 +11,12 @@ rabbitmq:
         port: 8080
         targetport: 8080
     labels:
-        name: 
-           app: rabbitmq
+        app.kubernetes.io/name: rabbitmq
+        helm.sh/chart: rabbitmq-11.13.0
+        app.kubernetes.io/instance: rabbitmq
+        app.kubernetes.io/managed-by: Helm
+        app: rabbitmq
+            
     container:
         name: rabbitmq
     serviceAccountName: rabbitmq

@@ -5,11 +5,10 @@ metadata:
   name: {{ .Values.rabbitmq.service.name }}-headless
   namespace: {{ .Values.namespace }}
   labels:
-  {{ toYaml .Values.rabbitmq.labels | indent 4 }}
-#     app.kubernetes.io/name: rabbitmq
-#     helm.sh/chart: rabbitmq-11.13.0
-#     app.kubernetes.io/instance: rabbitmq
-#     app.kubernetes.io/managed-by: Helm
+     app.kubernetes.io/name: rabbitmq
+     helm.sh/chart: rabbitmq-11.13.0
+     app.kubernetes.io/instance: rabbitmq
+     app.kubernetes.io/managed-by: Helm
 spec:
   clusterIP: None
   ports:

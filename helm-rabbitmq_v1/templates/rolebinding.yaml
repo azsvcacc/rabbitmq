@@ -5,11 +5,10 @@ metadata:
   name: rabbitmq-endpoint-reader
   namespace: {{ .Values.namespace }}
   labels:
-  {{ toYaml .Values.rabbitmq.labels | indent 4 }}
-#     app.kubernetes.io/name: rabbitmq
-#     helm.sh/chart: rabbitmq-11.13.0
-#     app.kubernetes.io/instance: release
-#     app.kubernetes.io/managed-by: Helm
+     app.kubernetes.io/name: rabbitmq
+     helm.sh/chart: rabbitmq-11.13.0
+     app.kubernetes.io/instance: release
+     app.kubernetes.io/managed-by: Helm
 subjects:
   - kind: ServiceAccount
     name: {{ .Values.rabbitmq.serviceAccountName }}

@@ -5,11 +5,10 @@ metadata:
   name: {{ .Values.rabbitmq.deployment.name }}
   namespace: {{ .Values.namespace }}
   labels:
-  {{ toYaml .Values.rabbitmq.labels | indent 4 }}
-#     app.kubernetes.io/name: rabbitmq
-#     helm.sh/chart: rabbitmq-11.13.0
-#     app.kubernetes.io/instance: rabbitmq
-#     app.kubernetes.io/managed-by: Helm
+     app.kubernetes.io/name: rabbitmq
+     helm.sh/chart: rabbitmq-11.13.0
+     app.kubernetes.io/instance: rabbitmq
+     app.kubernetes.io/managed-by: Helm
 spec:
   serviceName: {{ .Values.rabbitmq.service.name }}-headless
   podManagementPolicy: OrderedReady
@@ -24,7 +23,10 @@ spec:
   template:
     metadata:
       labels:
-      {{ toYaml .Values.rabbitmq.labels | indent 4 }}
+        app.kubernetes.io/name: rabbitmq
+        helm.sh/chart: rabbitmq-11.13.0
+        app.kubernetes.io/instance: my-release
+        app.kubernetes.io/managed-by: Helm
         app: rabbitmq
       annotations:
         checksum/config: 0976bbf2fda8340e9cbadf20fac74efe4a68f63c70b7580bbfbc9c2aae1451a9

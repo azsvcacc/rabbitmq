@@ -43,7 +43,7 @@ spec:
                 labelSelector:
                   matchLabels:
                     app.kubernetes.io/name: rabbitmq
-                    app.kubernetes.io/instance: my-release
+                    app.kubernetes.io/instance: rabbitmq
                 topologyKey: kubernetes.io/hostname
               weight: 1
         nodeAffinity:

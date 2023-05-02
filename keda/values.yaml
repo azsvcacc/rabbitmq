@@ -1,0 +1,11 @@
+namespace: default
+
+rabbitmq:
+    deployment:
+        name: rabbitmq-consumer
+        image: jeffhollan/rabbitmq-client:dev
+        replicaCount: 4
+    secret:
+        data: YW1xcDovL3VzZXI6UEFTU1dPUkRAcmFiYml0bXEuZGVmYXVsdC5zdmMuY2x1c3Rlci5sb2NhbDo1Njcy
+    ingress:
+         host: rabbitmq.example.com

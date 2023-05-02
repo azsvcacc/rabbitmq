@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.rabbitmq.deployment.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: rabbitmq-consumer
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq-consumer
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-consumer
+    spec:
+      containers:
+        - name: rabbitmq-consumer
+          image: {{ .Values.rabbitmq.deployment.image }}
+          imagePullPolicy: Always
+          command:
+            - receive
+          args:
+            - "amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672"

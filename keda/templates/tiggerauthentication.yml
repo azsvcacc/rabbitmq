@@ -1,0 +1,10 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: {{ .Values.rabbitmq.deployment.name }}-trigger
+  namespace: {{ .Values.namespace }}
+spec:
+  secretTargetRef:
+    - parameter: host
+      name: {{ .Values.rabbitmq.deployment.name }}-secret
+      key: RabbitMqHost

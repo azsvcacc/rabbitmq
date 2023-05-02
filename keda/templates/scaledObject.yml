@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ .Values.rabbitmq.deployment.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  scaleTargetRef:
+    name: java-rabbitmq-consumer
+  pollingInterval: 5 # Optional. Default: 30 seconds
+  cooldownPeriod: 120 # Optional. Default: 300 seconds
+  maxReplicaCount: 20 # Optional. Default: 100
+  triggers:
+    - type: rabbitmq
+      metadata:
+        protocol: amqp
+        queueName: queue001
+        mode: QueueLength
+        value: "5"
+        #host: amqp://user:08oFids7wjXgTy9i@20.124.64.102:5672
+      authenticationRef:
+        name: {{ .Values.rabbitmq.deployment.name }}-trigger
